@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NASDAQ · level retrace v2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="mark">NQ</div>
+    <div>
+      <h1>NASDAQ · level retrace <span>v2</span></h1>
+      <div class="sub" id="dataInfo">loading…</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <select id="fileSelect" class="btn fileSelect" title="Which CSV file from data/ to analyse; each file keeps its own results"></select>
+    <label class="miniField" title="How many combinations run at once on this page. 1 uses the least memory. 4 uses every processor.">
+      <span>Processors</span>
+      <input id="workersInput" type="number" min="1" max="4" step="1" value="2">
+    </label>
+    <button id="runMissingBtn" class="btn primary" title="Run every combination that is not in summary.json yet">Run missing</button>
+    <button id="runAllBtn" class="btn danger" title="Recompute every combination from scratch">Re-run all</button>
+    <button id="runShownBtn" class="btn" title="Run the combinations that pass the current filters (finished ones are skipped)">Run filtered</button>
+    <button id="refreshBtn" class="btn ghost">Refresh</button>
+    <a class="btn ghost" href="definitions.html" target="_blank" rel="noopener">Definitions</a>
+    <div class="fontBox" title="Text size of the whole report">
+      <button id="fontMinus" class="btn ghost" type="button" aria-label="Smaller text">A−</button>
+      <button id="fontLabel" class="fontLabel" type="button" title="Reset to 100%">100%</button>
+      <button id="fontPlus" class="btn ghost" type="button" aria-label="Larger text">A+</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <span class="dot" id="statusDot"></span>
+    <span id="statusText">idle</span>
+    <div class="bar" id="statusBarWrap" hidden><div id="statusBar"></div></div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="runs">Runs</button>
+  <button class="tab" data-tab="factors">Factors</button>
+  <button class="tab" data-tab="audit">Audit day</button>
+  <button class="tab" data-tab="remarks">Remarks</button>
+</nav>
+
+<main>
+  <section id="tab-runs" class="tabpane active">
+    <div id="staleNote"></div>
+    <div class="filters" id="filters"></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search the run id…">
+      <label class="minField" title="Keep a run when its win rate is at least this percent. Leave blank for no limit. All filled minimums must match.">
+        Win % ≥ <input id="minWin" type="number" step="0.1" inputmode="decimal" placeholder="50">
+      </label>
+      <label class="minField" title="Keep a run when its net points are at least this. Leave blank for no limit. All filled minimums must match.">
+        Net pts ≥ <input id="minPoints" type="number" step="1" inputmode="decimal" placeholder="0">
+      </label>
+      <label><input type="checkbox" id="favOnly"> Favourites only</label>
+      <label><input type="checkbox" id="hideUnrun"> Hide not-run combinations</label>
+      <span id="runCount" class="muted"></span>
+      <span class="spacer"></span>
+      <button id="clearFilters" class="btn ghost small">Reset filters</button>
+      <button id="expandAll" class="btn ghost small" hidden>Collapse all</button>
+    </div>
+    <div class="tablewrap">
+      <table class="runs" id="runsTable">
+        <thead><tr id="runsHead"></tr></thead>
+        <tbody id="runsBody"></tbody>
+      </table>
+    </div>
+    <div class="more"><button id="moreBtn" class="btn ghost" hidden>Show 300 more</button></div>
+  </section>
+
+  <section id="tab-factors" class="tabpane">
+    <p class="muted" id="factorIntro">One row per option of one factor, measured on the runs that pass the filters on the Runs tab. Net points are the sum of the trade results.</p>
+    <div id="factorTables"></div>
+  </section>
+
+  <section id="tab-audit" class="tabpane">
+    <div class="auditBar">
+      <label class="field">
+        <span>Run</span>
+        <input id="auditRun" list="runIds" placeholder="sl50_tp50_ny_lveth_cont_touch_1m_serial" spellcheck="false">
+      </label>
+      <datalist id="runIds"></datalist>
+      <label class="field"><span>Day (New York)</span><input id="auditDay" type="date" value="2026-10-29"></label>
+      <button id="auditLoadBtn" class="btn primary">Load day</button>
+      <button id="auditTradesBtn" class="btn ghost">Trades CSV</button>
+      <label class="check"><input type="checkbox" id="auditTakenOnly"> Taken only</label>
+      <span id="auditMeta" class="muted"></span>
+    </div>
+    <div class="auditChartWrap">
+      <canvas id="auditCanvas"></canvas>
+      <div class="legend">
+        <span><i class="gold"></i>weekly level</span>
+        <span><i class="sky"></i>daily level</span>
+        <span><i class="buy"></i>buy touch</span>
+        <span><i class="sell"></i>sell touch</span>
+        <span class="faint">filled ring = taken</span>
+      </div>
+      <div class="auditHints">wheel zoom · drag pan · double click reset</div>
+      <div id="auditTip" class="tip" hidden></div>
+    </div>
+    <div class="auditSplit">
+      <div class="auditTableWrap">
+        <table class="audit" id="auditTable">
+          <thead><tr>
+            <th data-sort="t" title="UTC time of the touch.">Time UTC</th>
+            <th data-sort="t" class="time" title="The same minute in America/New_York.">New York</th>
+            <th data-sort="side" title="Buy or sell, before the run’s type filter.">Side</th>
+            <th data-sort="level" class="num" title="The level price that was touched.">Level</th>
+            <th data-sort="rank" class="num" title="Order of this touch inside its one-minute bar.">Rank</th>
+            <th data-sort="look_days" class="num" title="Market days between the level candle and the trade day.">Age</th>
+            <th data-sort="kind" title="Weekly or daily level.">Level kind</th>
+            <th data-sort="source" title="Which completed candles supplied the level.">Source</th>
+            <th data-sort="decision" title="Taken, or why the touch was skipped.">Decision</th>
+            <th data-sort="points" class="num" title="Points from the fill to the exit. Taken trades only.">Points</th>
+            <th data-sort="exit" class="num" title="Exit price. Taken trades only.">Exit</th>
+            <th data-sort="mae" class="num" title="How far price moved against the fill before the exit, in points.">MAE</th>
+            <th data-sort="mfe" class="num" title="How far price moved in favour of the fill before the exit, in points.">MFE</th>
+            <th data-sort="bars" class="num" title="One-minute bars from entry to exit.">Bars</th>
+          </tr></thead>
+          <tbody id="auditBody"></tbody>
+        </table>
+      </div>
+      <div class="auditSummary" id="auditSummary"></div>
+    </div>
+  </section>
+  <section id="tab-remarks" class="tabpane">
+    <iframe class="remarksFrame" src="remarks.html" title="Remarks"></iframe>
+  </section>
+</main>
+
+<script src="report.js"></script>
+</body>
+</html>

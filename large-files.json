@@ -1,0 +1,107 @@
+[
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/bars_6ae6e46a.npz",
+    "bytes": 189086206,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__bars_6ae6e46a.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/bars_9fe5a0b8.npz",
+    "bytes": 179110681,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__bars_9fe5a0b8.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/bars_c97b17d3.npz",
+    "bytes": 178028356,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__bars_c97b17d3.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_GBPUSD_M1_202001020600_202610300618_all_151716763_1793341223_4.npz",
+    "bytes": 181611832,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_GBPUSD_M1_202001020600_202610300618_all_151716763_1793341223_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_GBPUSD_M1_202001020600_202610300618_eth_151716763_1793341223_4.npz",
+    "bytes": 200606532,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_GBPUSD_M1_202001020600_202610300618_eth_151716763_1793341223_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_GBPUSD_M1_202001020600_202610300618_rth_151716763_1793341223_4.npz",
+    "bytes": 202846482,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_GBPUSD_M1_202001020600_202610300618_rth_151716763_1793341223_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_US100_M1_202001020105_202610291406_all_156672361_1793326167_4.npz",
+    "bytes": 107853507,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_US100_M1_202001020105_202610291406_all_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_US100_M1_202001020105_202610291406_eth_156672361_1793326167_4.npz",
+    "bytes": 108995032,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_US100_M1_202001020105_202610291406_eth_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_US100_M1_202001020105_202610291406_rth_156672361_1793326167_4.npz",
+    "bytes": 103985057,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_US100_M1_202001020105_202610291406_rth_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_XAUUSD_M1_202001020600_202610300854_all_144493451_1793350468_4.npz",
+    "bytes": 117467482,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_XAUUSD_M1_202001020600_202610300854_all_144493451_1793350468_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_XAUUSD_M1_202001020600_202610300854_eth_144493451_1793350468_4.npz",
+    "bytes": 120352507,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_XAUUSD_M1_202001020600_202610300854_eth_144493451_1793350468_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_XAUUSD_M1_202001020600_202610300854_rth_144493451_1793350468_4.npz",
+    "bytes": 122573582,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_XAUUSD_M1_202001020600_202610300854_rth_144493451_1793350468_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_all_156672361_1793326167_4.npz",
+    "bytes": 107853507,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_all_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_eth_156672361_1793326167_4.npz",
+    "bytes": 108995032,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_eth_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace-v2/results/cache/events_rth_156672361_1793326167_4.npz",
+    "bytes": 103985057,
+    "asset": "analysis__nasdaq-level-retrace-v2__results__cache__events_rth_156672361_1793326167_4.npz"
+  },
+  {
+    "path": "analysis/nasdaq-level-retrace/results/positive_runs.html",
+    "bytes": 159705665,
+    "asset": "analysis__nasdaq-level-retrace__results__positive_runs.html"
+  },
+  {
+    "path": "data/GBPUSD_M1_202001020600_202610300618.csv",
+    "bytes": 151716763,
+    "asset": "data__GBPUSD_M1_202001020600_202610300618.csv"
+  },
+  {
+    "path": "data/US100_M1_201710040100_202610291359.csv",
+    "bytes": 196064522,
+    "asset": "data__US100_M1_201710040100_202610291359.csv"
+  },
+  {
+    "path": "data/US100_M1_202001020105_202610291406.csv",
+    "bytes": 156672361,
+    "asset": "data__US100_M1_202001020105_202610291406.csv"
+  },
+  {
+    "path": "data/XAUUSD_M1_202001020600_202610300854.csv",
+    "bytes": 144493451,
+    "asset": "data__XAUUSD_M1_202001020600_202610300854.csv"
+  },
+  {
+    "path": "data/usatechidxusd-m1-bid-2020-01-01-2026-10-25.csv",
+    "bytes": 142332005,
+    "asset": "data__usatechidxusd-m1-bid-2020-01-01-2026-10-25.csv"
+  }
+]

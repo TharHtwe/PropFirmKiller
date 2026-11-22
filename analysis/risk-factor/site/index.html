@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NASDAQ · risk factor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="mark">RF</div>
+    <div>
+      <h1>NASDAQ · risk factor <span>v1</span></h1>
+      <div class="sub" id="dataInfo">loading…</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <select id="fileSelect" class="btn fileSelect" title="Which CSV file from data/ to analyse; each file keeps its own results"></select>
+    <label class="miniField" title="Largest lot the scan may try. Rising lots stop as soon as every month fails.">
+      <span>Max lot</span>
+      <input id="maxLotInput" type="number" min="0.01" step="0.01" value="100" inputmode="decimal">
+    </label>
+    <label class="miniField" title="Starting balance of the fresh account opened every month, in USD">
+      <span>Balance</span>
+      <input id="balanceInput" type="number" min="100" step="100" value="5000" inputmode="numeric">
+    </label>
+    <label class="miniField" title="How many combinations run at once on this page. 1 uses the least memory. 4 uses every processor.">
+      <span>Processors</span>
+      <input id="workersInput" type="number" min="1" max="4" step="1" value="2">
+    </label>
+    <label class="miniField" title="Only this year is analysed, one month at a time">
+      <span>Year</span>
+      <input id="yearInput" type="number" min="2000" max="2100" step="1" value="2026" inputmode="numeric">
+    </label>
+    <button id="runMissingBtn" class="btn primary" title="Analyse every combination that is not in risk.json yet">Run missing</button>
+    <button id="runAllBtn" class="btn danger" title="Recompute every combination from scratch">Re-run all</button>
+    <button id="runShownBtn" class="btn" title="Analyse the combinations that pass the current filters (finished ones are skipped)">Run filtered</button>
+    <button id="refreshBtn" class="btn ghost">Refresh</button>
+    <div class="fontBox" title="Text size of the whole report">
+      <button id="fontMinus" class="btn ghost" type="button" aria-label="Smaller text">A−</button>
+      <button id="fontLabel" class="fontLabel" type="button" title="Reset to 100%">100%</button>
+      <button id="fontPlus" class="btn ghost" type="button" aria-label="Larger text">A+</button>
+    </div>
+  </div>
+
+  <div class="status">
+    <span class="dot" id="statusDot"></span>
+    <span id="statusText">idle</span>
+    <div class="bar" id="statusBarWrap" hidden><div id="statusBar"></div></div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="runs">Results</button>
+  <button class="tab" data-tab="factors">Factors</button>
+  <button class="tab" data-tab="about">About the model</button>
+  <button class="tab" data-tab="remarks">Remarks</button>
+</nav>
+
+<main>
+  <section id="tab-runs" class="tabpane active">
+    <div id="staleNote"></div>
+    <div class="statCards" id="summaryCards"></div>
+    <div class="filters" id="filters"></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search the run id…">
+      <label><input type="checkbox" id="favOnly"> Favourites only</label>
+      <label><input type="checkbox" id="hideUnrun"> Hide not-analysed combinations</label>
+      <span id="runCount" class="muted"></span>
+      <span class="spacer"></span>
+      <button id="exportBtn" class="btn ghost small" title="Download the rows that pass the filters as CSV">Export CSV</button>
+      <button id="clearFilters" class="btn ghost small">Reset filters</button>
+      <button id="expandAll" class="btn ghost small" hidden>Collapse all</button>
+    </div>
+    <div class="tablewrap">
+      <table class="runs" id="runsTable">
+        <thead><tr id="runsHead"></tr></thead>
+        <tbody id="runsBody"></tbody>
+      </table>
+    </div>
+    <div class="more"><button id="moreBtn" class="btn ghost" hidden>Show 300 more</button></div>
+  </section>
+
+  <section id="tab-factors" class="tabpane">
+    <p class="muted" id="factorIntro">One row per option of one factor, measured on the analysed runs that pass the filters on the Results tab. Only runs that are safe at the broker minimum lot are counted, because they are the ones with a tradeable lot.</p>
+    <div id="factorTables"></div>
+  </section>
+
+  <section id="tab-about" class="tabpane">
+    <div class="about" id="aboutBody"></div>
+  </section>
+  <section id="tab-remarks" class="tabpane">
+    <iframe class="remarksFrame" src="/strategy/remarks.html" title="Remarks"></iframe>
+  </section>
+</main>
+
+<script src="risk.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>NASDAQ · Lightweight Charts</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">NQ</div>
+        <div class="brand-text">
+          <div class="brand-title">NASDAQ</div>
+          <div class="brand-sub" id="brandSub">1-minute CSV · replay terminal</div>
+        </div>
+      </div>
+
+      <div class="topbar-group">
+        <label class="field">
+          <span>Data</span>
+          <select id="fileSelect" title="CSV dataset from ./data — Dukascopy epoch CSV or MetaTrader 5 export"></select>
+        </label>
+        <button id="openFileBtn" class="btn" title="Open a CSV file from disk">Open CSV</button>
+        <button id="updateBtn" class="btn ghost" title="Download the missing bars from the dataset's source (Dukascopy or MetaTrader 5) and append them to this CSV" disabled>Update data</button>
+        <input id="fileInput" type="file" accept=".csv,text/csv" hidden>
+      </div>
+
+      <div class="topbar-group tfs" id="tfGroup" aria-label="Timeframes"></div>
+
+      <div class="topbar-group">
+        <label class="field">
+          <span>Time zone</span>
+          <select id="tzSelect" title="Chart time zone"></select>
+        </label>
+        <label class="field">
+          <span>Sessions</span>
+          <select id="sessionSelect" title="Full session uses every candle; ETH rebuilds all timeframes from 18:00-17:00 New York candles; cash from 09:30-16:00 New York candles only"></select>
+        </label>
+      </div>
+
+      <div class="topbar-group goto-group">
+        <label class="field">
+          <span>Go to</span>
+          <input id="gotoInput" type="datetime-local" step="60" title="Jump to date &amp; time (selected time zone)">
+        </label>
+        <button id="gotoBtn" class="btn">Go</button>
+        <button id="latestBtn" class="btn ghost" title="Jump to the latest bar">Latest</button>
+      </div>
+
+      <div class="topbar-group">
+        <button id="replayBtn" class="btn primary" title="Bar-by-bar replay / backtest">Replay</button>
+        <button id="strategyBtn" class="btn ghost" title="Level-retrace v2 strategy report, grid runs and audit day">Strategy</button>
+        <button id="riskBtn" class="btn ghost" title="LiteFinance risk-factor check for every run and month">Risk</button>
+        <button id="propBtn" class="btn ghost" title="2-step prop replay, one account per weekday">Prop firm</button>
+        <button id="prop2Btn" class="btn ghost" title="Same rules on one account traded every day">Prop firm 2</button>
+        <button id="combineBtn" class="btn ghost" title="London, New York, and RTH together, with the 08:30 news rule">Combine</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <nav class="toolrail" aria-label="Drawing tools">
+        <button class="tool active" data-tool="pan" title="Pan &amp; zoom (Esc)">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3.2"/></svg>
+        </button>
+        <button class="tool" data-tool="select" title="Select / edit drawings">
+          <svg viewBox="0 0 24 24"><path d="M5 3.5l14 7.6-6.1 1.5-2.7 5.9z"/></svg>
+        </button>
+        <div class="rail-sep"></div>
+        <button class="tool" data-tool="trend" title="Trend line">
+          <svg viewBox="0 0 24 24"><path d="M4.5 19.5L19.5 4.5"/><circle cx="4.5" cy="19.5" r="1.9"/><circle cx="19.5" cy="4.5" r="1.9"/></svg>
+        </button>
+        <button class="tool" data-tool="hline" title="Horizontal line">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18"/><circle cx="7" cy="12" r="1.9"/></svg>
+        </button>
+        <button class="tool" data-tool="hray" title="Horizontal ray">
+          <svg viewBox="0 0 24 24"><path d="M4 12h16"/><circle cx="4" cy="12" r="1.9"/></svg>
+        </button>
+        <button class="tool" data-tool="vline" title="Vertical line">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18"/><circle cx="12" cy="7" r="1.9"/></svg>
+        </button>
+        <button class="tool" data-tool="rect" title="Rectangle">
+          <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="1.2"/></svg>
+        </button>
+        <div class="rail-sep"></div>
+        <button id="deleteBtn" class="tool danger" title="Delete selected drawing (Del)" disabled>
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 12.5h9l1-12.5"/></svg>
+        </button>
+      </nav>
+
+      <div class="chart-area">
+        <div id="chartWrap">
+          <div id="chart"></div>
+          <canvas id="overlay"></canvas>
+
+          <div id="legend" class="legend">
+            <div class="legend-row">
+              <span class="legend-symbol">NASDAQ</span>
+              <span class="legend-tf" id="legendTf">1D</span>
+              <span class="legend-sep"></span>
+              <span class="legend-item"><i>O</i><b id="lgO">—</b></span>
+              <span class="legend-item"><i>H</i><b id="lgH">—</b></span>
+              <span class="legend-item"><i>L</i><b id="lgL">—</b></span>
+              <span class="legend-item"><i>C</i><b id="lgC">—</b></span>
+              <span class="legend-chg" id="lgChg">—</span>
+            </div>
+            <div class="legend-row sub">
+              <span id="lgTime">—</span>
+              <span class="legend-sep"></span>
+              <span>Vol <b id="lgVol">—</b></span>
+              <span class="legend-sep"></span>
+              <span id="lgTz">New York</span>
+              <span class="legend-sep"></span>
+              <span id="lgSession">Full session</span>
+            </div>
+          </div>
+
+          <div id="hint" class="hint">Drag to pan · Scroll to zoom · Click a tool to draw</div>
+
+          <div id="objectsPanel" class="objects">
+            <div class="objects-head">
+              <button id="objectsToggle" class="objects-title" title="Show / hide drawings">
+                Objects <span id="objCount" class="obj-count">0</span>
+              </button>
+              <button id="clearDrawingsBtn" class="mini-btn" title="Remove all drawings on this dataset">Clear</button>
+            </div>
+            <div id="colorRow" class="color-row" hidden></div>
+            <div id="widthRow" class="width-row" title="Stroke width in pixels: applies to the selected drawing, or to the next drawing">
+              <span class="width-label">Width</span>
+              <input id="widthRange" type="range" min="1" max="8" step="0.5" value="1.5">
+              <span id="widthValue" class="width-value">1.5 px</span>
+            </div>
+            <div id="objectsList" class="objects-list">
+              <div class="objects-empty">No drawings yet</div>
+            </div>
+          </div>
+
+          <div id="replaySetup" class="replay-setup" hidden>
+            <div class="rs-title">Start replay</div>
+            <label class="field compact">
+              <span>From</span>
+              <input id="replayStartInput" type="datetime-local" step="60">
+            </label>
+            <div class="rs-note">Replay starts on the last bar at or before this time.</div>
+            <div class="rs-actions">
+              <button id="replayStartBtn" class="btn primary">Start</button>
+              <button id="replaySetupClose" class="btn ghost">Cancel</button>
+            </div>
+          </div>
+
+          <div id="replayBar" class="replay-bar" hidden>
+            <span class="replay-dot"></span>
+            <span class="replay-label">REPLAY</span>
+            <span id="replayTime" class="replay-time">—</span>
+            <div class="replay-controls">
+              <button id="replayPlayBtn" class="btn small" title="Play / pause (Space)">Play</button>
+              <button id="replayStepBtn" class="btn small ghost" title="Step one bar (→)">Step</button>
+              <select id="replaySpeed" class="mini-select" title="Replay speed">
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+                <option value="5">5×</option>
+                <option value="20">20×</option>
+              </select>
+            </div>
+            <div class="replay-trade">
+              <button id="tradeBuy" class="btn small buy" title="Paper buy at the current close">Buy</button>
+              <button id="tradeSell" class="btn small sell" title="Paper sell at the current close">Sell</button>
+              <span id="tradeStatus" class="trade-status">Flat</span>
+            </div>
+            <button id="replayExitBtn" class="btn small ghost" title="Exit replay">Exit</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="loader" class="loader" hidden>
+      <div class="loader-card">
+        <div class="loader-title" id="loaderTitle">Loading dataset</div>
+        <div class="loader-sub" id="loaderSub">—</div>
+        <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="loader-foot" id="loaderFoot">—</div>
+        <button id="loaderClose" class="btn ghost" hidden>Close</button>
+      </div>
+    </div>
+
+    <div id="toasts" class="toasts"></div>
+  </div>
+
+  <script src="/vendor/lightweight-charts.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

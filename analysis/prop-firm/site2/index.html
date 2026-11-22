@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prop firm 2 · one account</title>
+<link rel="stylesheet" href="/prop/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="mark">P2</div>
+    <div>
+      <h1>Prop firm 2 <span>one account</span></h1>
+      <div class="sub" id="dataInfo">loading…</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <select id="fileSelect" class="btn fileSelect" title="Which CSV file. Favourites and results are stored per file."></select>
+    <label class="miniField" title="How many combinations run at once on this page. 1 uses the least memory. 4 uses every processor.">
+      <span>Processors</span>
+      <input id="workersInput" type="number" min="1" max="4" step="1" value="2">
+    </label>
+    <button id="runMissingBtn" class="btn primary" title="Analyse combinations that have no stored one-account result">Run missing</button>
+    <button id="runShownBtn" class="btn" title="Analyse the combinations that pass the filters. Finished ones are skipped.">Run filtered</button>
+    <button id="runAllBtn" class="btn danger" title="Recompute every combination on one account">Re-run all</button>
+    <button id="refreshBtn" class="btn ghost" title="Reload stored one-account results">Refresh</button>
+    <a class="btn ghost" href="/prop/" target="_blank" rel="noopener">Prop firm</a>
+    <a class="btn ghost" href="/strategy/" target="_blank" rel="noopener">Strategy</a>
+  </div>
+
+  <div class="status">
+    <span class="dot" id="statusDot"></span>
+    <span id="statusText">idle</span>
+    <div class="bar" id="statusBarWrap" hidden><div id="statusBar"></div></div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="runs">Results</button>
+  <button class="tab" data-tab="about">Rules</button>
+  <button class="tab" data-tab="remarks">Remarks</button>
+</nav>
+
+<main>
+  <section id="tab-runs" class="tabpane active">
+    <div id="staleNote"></div>
+    <div class="filters" id="filters"></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search the run id…">
+      <label class="minField" title="Keep a run when its win rate is at least this percent. Leave blank for no limit. All filled minimums must match.">
+        Win % ≥ <input id="minWin" type="number" step="0.1" inputmode="decimal" placeholder="50">
+      </label>
+      <label class="minField" title="Keep a run when its points are at least this. Leave blank for no limit. All filled minimums must match.">
+        Points ≥ <input id="minPoints" type="number" step="1" inputmode="decimal" placeholder="0">
+      </label>
+      <label class="minField" title="Keep a run when its net cash is at least this many dollars. Leave blank for no limit. All filled minimums must match.">
+        Net cash ≥ <input id="minCash" type="number" step="1" inputmode="decimal" placeholder="10000">
+      </label>
+      <label class="minField" title="Keep a run when received divided by fees is at least this. 1 means payouts covered the fees. Leave blank for no limit.">
+        Recv/Fees ≥ <input id="minRatio" type="number" step="0.1" inputmode="decimal" placeholder="1">
+      </label>
+      <label><input type="checkbox" id="favOnly"> Saved only</label>
+      <label><input type="checkbox" id="stratFavOnly"> Strategy favourites only</label>
+      <label><input type="checkbox" id="hideUnrun"> Hide not analysed</label>
+      <span id="runCount" class="muted"></span>
+      <span class="spacer"></span>
+      <button id="clearFilters" class="btn ghost small">Reset filters</button>
+    </div>
+    <div class="tablewrap">
+      <table class="runs" id="runsTable">
+        <thead><tr id="runsHead"></tr></thead>
+        <tbody id="runsBody"></tbody>
+      </table>
+    </div>
+    <div class="more"><button id="moreBtn" class="btn ghost" type="button" hidden>Show 300 more</button></div>
+  </section>
+
+  <section id="tab-about" class="tabpane">
+    <div class="note">
+      <p>Same strategy combinations as the Prop firm page, replayed as one account instead of five. Buy one $5,000 account and trade it every weekday. Results are stored separately, so the five-account page is left as it is.</p>
+      <ul>
+        <li>The account starts at $5,000 and the fee is $22. Every trade, on every weekday, goes into that one account in time order.</li>
+        <li>Phase 1 needs $400 and 3 days of at least $25. Phase 2 needs $250 and 3 such days. Passing stays on the same account and the balance returns to $5,000. There is no new fee for a pass.</li>
+        <li>Funded profit is paid at 80% once it is at least $20, with 3 winning days and 10 weekdays after the first funded trade. The balance returns to $5,000 and trading continues on the same account.</li>
+        <li>Touching $4,600, or that day’s 4% line, blows the account. The next trade buys a new one, pays $22 again, and starts at phase 1. Progress on the blown account is gone.</li>
+        <li>Challenges is how many accounts were bought. Left is profit still inside the live account at the end of the file. It is not included in net cash. End is the phase of that last account, or blown.</li>
+        <li>To funded is the calendar days from the first account’s first trade until phase 2 is passed the first time. Accounts that blew before that are included. A run that never reaches funded shows a dash.</li>
+        <li>Funded 1st, Blown 1st, Funded % and Earliest start a fresh account on the 1st of each month from January 2020. Trading uses only trades on or after that date, and the check stops at the first funded account or the first blow. It does not buy a replacement. Earliest is the fewest calendar days from the 1st until funded. Months with no trades are skipped. A month still in phase 1 or 2 at the end of the file is open and is not counted as funded or blown. Open a row for the month-by-month list.</li>
+        <li>A 50-point stop is 0.10 lot. A 100-point stop is 0.05 lot. On US100 that is $2 and $1 per index point. The spread is already inside the strategy trades.</li>
+        <li>Cash open is Skip 09:30 or Include 09:30. On US100 the stored New York RTH id skips that bar. The same id ending in _keep includes it.</li>
+        <li>NY open is Skip or Include 08:30-08:32, and only for the New York session. The stored id includes 08:30 and 08:31. The same id ending in _skip drops those two New York minutes. 08:32 stays. RTH, London and All are unchanged.</li>
+        <li>Results are stored under analysis/prop-firm/results/&lt;csv stem&gt;/prop2.json. The five-account prop.json is not modified.</li>
+      </ul>
+    </div>
+  </section>
+  <section id="tab-remarks" class="tabpane">
+    <iframe class="remarksFrame" src="/strategy/remarks.html" title="Remarks"></iframe>
+  </section>
+</main>
+
+<div id="toasts"></div>
+<script>
+  window.PROP_PAGE = {
+    api: '/api/prop2',
+    fileKey: 'nq-prop2-file-v1',
+    single: true,
+  };
+</script>
+<script src="/prop/prop.js"></script>
+</body>
+</html>

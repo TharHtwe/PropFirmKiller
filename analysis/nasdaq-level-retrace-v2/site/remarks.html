@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remarks</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  main.doc { max-width: 900px; margin: 0 auto; padding: 22px 20px 90px; }
+  .doc h1 { font-size: 22px; margin: 0 0 6px; }
+  .doc h2 { font-size: 15px; margin: 28px 0 8px; color: #fff; }
+  .doc p, .doc li { max-width: 78ch; color: #c3c9d8; font-size: 12.5px; line-height: 1.65; }
+  .doc ol li, .doc ul li { margin: 4px 0; }
+  .doc code { color: #a9c0ff; }
+  .doc table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); margin: 10px 0 18px; font-size: 12px; }
+  .doc th, .doc td { border-bottom: 1px solid var(--line-soft); text-align: left; padding: 8px 10px; vertical-align: top; }
+  .doc th { width: 16ch; color: #dfe5f2; font-weight: 600; }
+  .doc td { color: #b9c1d2; }
+</style>
+</head>
+<body>
+<main class="doc">
+  <h1>Remarks</h1>
+  <p>How to read the runs, and which numbers decide a configuration. The Rules and About tabs describe the formulas. This page records what those numbers mean once the grids have been compared.</p>
+
+  <h2>Which prop configuration to keep</h2>
+  <p>On the five-account page, sort in this order. Stop when a later column would pick a run that already failed an earlier one.</p>
+  <ol>
+    <li><b>Funded %</b> first. It is the share of weekday-starts that reach funded before they blow. Open the row and read Monday through Friday. A high percentage carried by one weekday is not a robust run.</li>
+    <li><b>Funded wds</b> next. Prefer 5. Funded % can look strong when only Monday works; Funded wds shows how many of the five weekday accounts ever reach funded.</li>
+    <li><b>To funded</b> after those two. Lower is faster. It is the median calendar days across the weekdays that did reach funded. A weekday that never funds is left out of the median, so a fast median with Funded wds of 1 is one good day, not a good week.</li>
+    <li><b>Net cash</b> and <b>Recv/Fees</b> last. Reaching funded does not mean the account paid. Net cash is payouts minus fees. Recv/Fees of 1 means payouts covered the fees. Unpaid profit still inside the live account is not in net cash.</li>
+  </ol>
+  <p><b>Earliest</b> is the single fastest month and weekday. Use it as a best case. The row detail gives the usual range: minimum, maximum, and average days of the funded starts.</p>
+  <p>Prop firm 2 is one account for every weekday. It has no Funded wds column. Funded % there is month-starts, not weekday-starts. The same order applies: Funded %, then To funded, then Net cash and Recv/Fees. Earliest is still only the best case.</p>
+
+  <h2>What the funded columns count</h2>
+  <table>
+    <tr><th>To funded</th><td>Calendar days from that account’s first trade until phase 2 is passed the first time, including accounts that blew before the pass. On the five-account page the column is the median of the weekdays that reached funded.</td></tr>
+    <tr><th>Funded 1st / Blown 1st</th><td>A fresh account is started on the 1st of each month from January 2020. It trades only from that date and stops at the first funded account or the first blow. It does not buy a replacement. On the five-account page each weekday is its own account.</td></tr>
+    <tr><th>Funded %</th><td>Funded first divided by funded first plus blown first. A start still in phase 1 or phase 2 at the end of the file is open and is left out.</td></tr>
+    <tr><th>P1 / P2 days</th><td>Calendar days from a phase’s first trade to the day that phase is passed. Minimum, maximum, and average are across every pass. A phase that never passed is a dash.</td></tr>
+  </table>
+
+  <h2>Five accounts and one account</h2>
+  <p>The prop page buys one $5,000 account per New York weekday. A Tuesday loss does not touch Monday. A blown weekday is replaced on its next trade, and the fee is paid again. Prop firm 2 buys one account and sends every weekday into it. A pass or a payout stays on that same account and the balance returns to $5,000. A blow buys a new account on the next trade.</p>
+  <p>Both use the same targets: phase 1 needs $400 and 3 days of at least $25, phase 2 needs $250 and 3 such days. Funded profit is paid at 80% once it is at least $20. The floor is $4,600 and the daily line is 4%.</p>
+
+  <h2>How a trade is filled</h2>
+  <p>Touch still fills from the level. A touch sell fills at the level. A touch buy is triggered when the bid is one spread below the level and is valued at the level, so a full target pays the target points. The spread is 1.3.</p>
+  <p>A 1-minute close fills at that candle’s close. A buy adds 1.3. The stop and target are measured from the fill, not from the level. Continuation needs the candle body itself to cross the level: open on one side, close on the other. A wick through a second level on the same bar is not a confirmation. Reversal needs two closes: the previous close on one side of the level, and this close back on the other side. A wick rejection on one bar is not a reversal. When a bar does not gap, the two rules often select the same bar. They differ when the bar opens already beyond the level.</p>
+
+  <h2>Sessions and the open minutes</h2>
+  <p>New York is 08:00–17:00 America/New_York. RTH is 09:30–16:00. London is 08:00–16:30 Europe/London. All is London or New York. The clocks follow daylight saving; they are not a fixed offset from UTC.</p>
+  <p>On US100, a stored RTH id skips the 09:30 bar. The same id ending in <code>_keep</code> includes it. A stored New York id includes 08:30 and 08:31. The same id ending in <code>_skip</code> drops those two minutes and keeps 08:32. London, RTH, and All are not changed by the New York open option. The 09:30 option does not apply outside RTH, and the 08:30 option does not apply outside New York. Those cells show a dash.</p>
+
+  <h2>Kelly is not a position size</h2>
+  <p>The strategy page reports a Kelly fraction from the gap between the win rate and the win rate after a loss. A gap of 0 to 2 keeps size fixed. Above 2, 4, and 6 the map names 1/5, 1/3, and 1/2 Kelly. Above 8 no fraction is used. A positive gap means the map would raise risk after a win and cut it after a loss. A negative gap means the opposite. The number is a suggestion. It does not change the lot, the points, or the equity. Every published curve is one contract.</p>
+
+  <h2>Risk Factor is a different model</h2>
+  <p>The risk page scores a fixed lot against the LiteFinance Risk Factor for one calendar year, 2026 unless another year is chosen. Each month opens a fresh account. The lot shown is the largest lot whose Risk Factor stays under 5.5 in every month of that year. It does not change size from one trade to the next, and it does not use the Kelly map.</p>
+  <p>Risk Factor is 0.5 times drawdown points, plus 0.3 times deposit-utilisation points, plus 0.1 times leverage points, plus 0.1 times lifespan points. With leverage 400 and lifespan 0, the last two terms are a fixed 2.0. A month passes when the score is below 5.5.</p>
+
+  <h2>Combine</h2>
+  <p>The Combine page trades three fixed runs, one continuation a day in each session: London <code>sl50_tp50_london_lvrth_cont_confirm_1m_one</code>, New York <code>sl50_tp50_ny_lvall_cont_touch_1m_one</code>, and New York RTH <code>sl50_tp50_rth_lvall_cont_touch_1m_one_keep</code>. Lookback stays at one month. The seven rows are every mix of those sessions.</p>
+  <p>A high-impact day is a date in usd_0830_redfolder_dates_2020-2027.csv, the 08:30 red-folder list. On that day only, a New York trade does not open or close from 08:28 through 08:32. One still open at the 08:27 close is cut in half. At the 08:32 close the remainder aims for 100 points, or is closed if that move is already past, and its stop is 4 percent of the equity marked from the last bid before 00:00 UTC. London and RTH are left alone. Other days are unchanged. The strategy column uses one account that does not reset. Prop and Prop firm 2 use their own accounts, so the news stop can be a different distance.</p>
+</main>
+</body>
+</html>

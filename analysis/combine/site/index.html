@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combine · three sessions</title>
+<link rel="stylesheet" href="/prop/style.css">
+<style>
+  .sessions { display: flex; gap: 8px; align-items: center; }
+  .sessions label { display: flex; gap: 6px; align-items: center; color: var(--text); }
+  .chip { display: inline-block; margin: 0 4px 0 0; padding: 1px 6px; border-radius: 999px; background: var(--panel-3); color: var(--text); font-size: 11px; }
+  .detail { padding: 12px 14px 16px; background: #10141e; }
+  .detail h3 { margin: 14px 0 6px; font-size: 12px; color: #fff; }
+  .detail p, .detail li { color: #c3c9d8; max-width: 95ch; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .card h3 { margin: 0 0 8px; }
+  .mini { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .mini th, .mini td { border-bottom: 1px solid var(--line-soft); text-align: right; padding: 4px 6px; }
+  .mini th:first-child, .mini td:first-child { text-align: left; }
+  .scroll { max-height: 280px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }
+  .doc { max-width: 900px; }
+  .doc h2 { font-size: 15px; margin: 22px 0 8px; color: #fff; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">CB</div>
+    <div>
+      <h1>Combine <span>three sessions</span></h1>
+      <div class="sub" id="dataInfo">loading…</div>
+    </div>
+  </div>
+  <div class="actions">
+    <select id="fileSelect" class="btn fileSelect" title="US100 minute file. Results are stored per file."></select>
+    <button id="runBtn" class="btn primary" title="Analyse all seven session mixes. Finished rows are kept.">Run</button>
+    <button id="rerunBtn" class="btn danger" title="Recompute all seven mixes, including ones already stored.">Re-run all</button>
+    <button id="refreshBtn" class="btn ghost" title="Reload stored results and the news-day file.">Refresh</button>
+    <a class="btn ghost" href="/strategy/" target="_blank" rel="noopener">Strategy</a>
+    <a class="btn ghost" href="/prop/" target="_blank" rel="noopener">Prop firm</a>
+    <a class="btn ghost" href="/prop2/" target="_blank" rel="noopener">Prop firm 2</a>
+  </div>
+  <div class="status">
+    <span class="dot" id="statusDot"></span>
+    <span id="statusText">idle</span>
+    <div class="bar" id="statusBarWrap" hidden><div id="statusBar"></div></div>
+  </div>
+</header>
+<nav class="tabs">
+  <button class="tab active" data-tab="runs">Results</button>
+  <button class="tab" data-tab="news">News days</button>
+  <button class="tab" data-tab="rules">Rules</button>
+  <button class="tab" data-tab="handling">News handling</button>
+  <button class="tab" data-tab="remarks">Remarks</button>
+</nav>
+<main>
+  <section id="tab-runs" class="tabpane active">
+    <div id="staleNote"></div>
+    <div class="toolbar">
+      <div class="sessions" title="A row stays visible when every session it uses is checked.">
+        <label><input type="checkbox" id="useLondon" checked> London</label>
+        <label><input type="checkbox" id="useNy" checked> New York</label>
+        <label><input type="checkbox" id="useRth" checked> New York RTH</label>
+      </div>
+      <span id="runCount" class="muted"></span>
+    </div>
+    <div class="tablewrap">
+      <table class="runs" id="runsTable">
+        <thead><tr id="runsHead"></tr></thead>
+        <tbody id="runsBody"></tbody>
+      </table>
+    </div>
+  </section>
+  <section id="tab-news" class="tabpane">
+    <div id="newsSummary" class="doc" style="padding:16px"></div>
+    <div class="tablewrap"><table class="runs" id="newsTable"></table></div>
+  </section>
+  <section id="tab-rules" class="tabpane">
+    <div class="doc" style="padding:16px 16px 40px">
+      <h2>The three runs</h2>
+      <p>Each session keeps one stored configuration, and each session takes one continuation trade a day. Lookback is one month. A later switch from 1 month to 6 months, 1 year, and all history is not in this page, because there is no rule yet for when to change it.</p>
+      <ul>
+        <li>London: <code>sl50_tp50_london_lvrth_cont_confirm_1m_one</code></li>
+        <li>New York: <code>sl50_tp50_ny_lvall_cont_touch_1m_one</code></li>
+        <li>New York RTH: <code>sl50_tp50_rth_lvall_cont_touch_1m_one_keep</code></li>
+      </ul>
+      <p>The seven rows are every mix: each session alone, each pair, and all three. Check London, New York, or RTH to hide mixes that use a session you turned off. Run analyses all seven. It does not start by itself.</p>
+      <h2>High-impact days</h2>
+      <p>A New York day is high impact when its date is in <code>usd_0830_redfolder_dates_2020-2027.csv</code>, the 08:30 red-folder release list. A listed date with no bar in this price file is skipped. The dates that were used are written to <code>news-days.csv</code> in the same results folder, with the release names and the 08:30 and 08:31 ranges. On every other day the three runs trade exactly as they do on the strategy page.</p>
+      <p>On a high-impact day a New York trade does not open or close from 08:28 through 08:32. The 08:32 close is the first price that may close the remaining half. If the day's first New York signal was inside the window, the next signal after 08:32 is the one trade. London and New York RTH are not blocked by this window.</p>
+      <h2>The open position</h2>
+      <p>If a New York trade is still open at the 08:27 close, half the lot is closed there. These runs use a 50-point stop, so the lot is 0.10 and the half is 0.05. The other half keeps its original stop and target until the 08:32 close, but those exits are not allowed to fill during the window.</p>
+      <p>At the 08:32 close the remainder aims for 100 points from the original fill. If the price is already past 100 points, it is closed at that close. Otherwise the stop becomes the price where today's loss reaches 4 percent of the equity marked at 00:00 UTC. The mark is the last bid before 00:00 UTC. Profit or loss from London, and from the half already closed, changes how much room is left. The 4 percent is not a fixed $200. It is 4 percent of that midnight equity, the same band the prop account uses. A fast bar can gap through the stop and the loss can be larger than 4 percent. That blows the prop account.</p>
+      <p>Points are weighed by the lot still open, against a full 0.10 lot. Closing half at a 20-point gain counts as 10 points. The other half later reaching 100 points counts as 50 points.</p>
+      <h2>Three results on each row</h2>
+      <p>Strategy uses one $5,000 account that never pays a fee and never resets. Its news stop still uses the 4 percent line, and it keeps trading after a loss. Prop firm uses five weekday accounts. Prop firm 2 uses one account for every day. A blow buys a new challenge on the next trade. A pass stays on the same account. Because each account has its own midnight equity, the news stop is not the same distance on all three, and the points can differ. The Points column is the strategy account. Prop points are in the row detail.</p>
+    </div>
+  </section>
+  <section id="tab-handling" class="tabpane">
+    <div id="handlingReport" class="doc" style="padding:16px 16px 40px"></div>
+  </section>
+  <section id="tab-remarks" class="tabpane">
+    <iframe class="remarksFrame" src="/strategy/remarks.html" title="Remarks"></iframe>
+  </section>
+</main>
+<script src="combine.js"></script>
+</body>
+</html>

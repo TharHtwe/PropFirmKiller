@@ -1,0 +1,524 @@
+date,weekday,time_et,status,n_releases,releases,sources
+2020-01-10,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-01-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-01-15,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-01-16,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-01-30,Thu,08:30,actual,1,GDP (advance),TV
+2020-01-31,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-02-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-02-13,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-02-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-02-19,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-02-27,Thu,08:30,actual,1,GDP (2nd est),TV
+2020-02-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-03-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-03-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-03-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-03-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-03-26,Thu,08:30,actual,1,GDP (final/3rd),TV
+2020-03-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-04-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-04-09,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-04-10,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-04-15,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-04-29,Wed,08:30,actual,1,GDP (advance),TV
+2020-04-30,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-05-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-05-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-05-13,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-05-15,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-05-28,Thu,08:30,actual,1,GDP (2nd est),TV
+2020-05-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-06-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-06-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-06-11,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-06-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-06-25,Thu,08:30,actual,1,GDP (final/3rd),TV
+2020-06-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-07-02,Thu,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-07-10,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-07-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-07-16,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-07-30,Thu,08:30,actual,1,GDP (advance),TV
+2020-07-31,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-08-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-08-11,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-08-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-08-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-08-27,Thu,08:30,actual,1,GDP (2nd est),TV
+2020-08-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-09-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-09-10,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-09-11,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-09-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-09-30,Wed,08:30,actual,1,GDP (final/3rd),TV
+2020-10-01,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-10-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-10-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-10-14,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-10-16,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-10-29,Thu,08:30,actual,1,GDP (advance),TV
+2020-10-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2020-11-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-11-12,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-11-13,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-11-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-11-25,Wed,08:30,actual,1,GDP (2nd est),TV
+2020-12-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2020-12-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2020-12-11,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2020-12-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2020-12-22,Tue,08:30,actual,1,GDP (final/3rd),TV
+2020-12-23,Wed,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-01-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-01-13,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-01-15,Fri,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2021-01-28,Thu,08:30,actual,1,GDP (advance),TV
+2021-01-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-02-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-02-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-02-17,Wed,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2021-02-25,Thu,08:30,actual,1,GDP (2nd est),TV
+2021-02-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-03-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-03-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-03-12,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-03-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-03-25,Thu,08:30,actual,1,GDP (final/3rd),TV
+2021-04-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-04-09,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-04-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-04-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-04-29,Thu,08:30,actual,1,GDP (advance),TV
+2021-04-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-05-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-05-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-05-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-05-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-05-27,Thu,08:30,actual,1,GDP (2nd est),TV
+2021-05-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-06-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-06-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-06-15,Tue,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2021-06-24,Thu,08:30,actual,1,GDP (final/3rd),TV
+2021-06-25,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-07-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-07-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-07-14,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-07-16,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-07-29,Thu,08:30,actual,1,GDP (advance),TV
+2021-07-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-08-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-08-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-08-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-08-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-08-26,Thu,08:30,actual,1,GDP (2nd est),TV
+2021-08-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-09-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-09-10,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-09-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-09-16,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-09-30,Thu,08:30,actual,1,GDP (final/3rd),TV
+2021-10-01,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-10-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-10-13,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-10-14,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-10-15,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-10-28,Thu,08:30,actual,1,GDP (advance),TV
+2021-10-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2021-11-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-11-09,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-11-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-11-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-11-24,Wed,08:30,actual,1,GDP (2nd est),TV
+2021-12-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2021-12-10,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2021-12-14,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2021-12-15,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2021-12-22,Wed,08:30,actual,1,GDP (final/3rd),TV
+2021-12-23,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-01-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-01-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-01-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-01-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-01-27,Thu,08:30,actual,1,GDP (advance),TV
+2022-01-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-02-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-02-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-02-15,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-02-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-02-24,Thu,08:30,actual,1,GDP (2nd est),TV
+2022-02-25,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-03-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-03-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-03-15,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-03-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-03-30,Wed,08:30,actual,1,GDP (final/3rd),TV
+2022-03-31,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-04-01,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-04-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-04-13,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-04-14,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-04-28,Thu,08:30,actual,1,GDP (advance),TV
+2022-04-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-05-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-05-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-05-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-05-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-05-26,Thu,08:30,actual,1,GDP (2nd est),TV
+2022-05-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-06-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-06-10,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-06-14,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-06-15,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-06-29,Wed,08:30,actual,1,GDP (final/3rd),TV
+2022-06-30,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-07-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-07-13,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-07-14,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-07-15,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-07-28,Thu,08:30,actual,1,GDP (advance),TV
+2022-07-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-08-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-08-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-08-11,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-08-17,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-08-25,Thu,08:30,actual,1,GDP (2nd est),TV
+2022-08-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-09-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-09-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-09-14,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-09-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-09-29,Thu,08:30,actual,1,GDP (final/3rd),TV
+2022-09-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-10-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-10-12,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-10-13,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-10-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-10-27,Thu,08:30,actual,1,GDP (advance),TV
+2022-10-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-11-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-11-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-11-15,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-11-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-11-30,Wed,08:30,actual,1,GDP (2nd est),TV
+2022-12-01,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2022-12-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2022-12-09,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2022-12-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2022-12-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2022-12-22,Thu,08:30,actual,1,GDP (final/3rd),TV
+2022-12-23,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-01-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-01-12,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-01-18,Wed,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2023-01-26,Thu,08:30,actual,1,GDP (advance),TV
+2023-01-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-02-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-02-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-02-15,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-02-16,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-02-23,Thu,08:30,actual,1,GDP (2nd est),TV
+2023-02-24,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-03-10,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-03-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-03-15,Wed,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2023-03-30,Thu,08:30,actual,1,GDP (final/3rd),TV
+2023-03-31,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-04-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-04-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-04-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-04-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-04-27,Thu,08:30,actual,1,GDP (advance),TV
+2023-04-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-05-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-05-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-05-11,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-05-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-05-25,Thu,08:30,actual,1,GDP (2nd est),TV
+2023-05-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-06-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-06-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-06-14,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-06-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-06-29,Thu,08:30,actual,1,GDP (final/3rd),TV
+2023-06-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-07-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-07-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-07-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-07-18,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-07-27,Thu,08:30,actual,1,GDP (advance),TV
+2023-07-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-08-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-08-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-08-11,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-08-15,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-08-30,Wed,08:30,actual,1,GDP (2nd est),TV
+2023-08-31,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-09-01,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-09-13,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-09-14,Thu,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2023-09-28,Thu,08:30,actual,1,GDP (final/3rd),TV
+2023-09-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-10-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-10-11,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-10-12,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-10-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-10-26,Thu,08:30,actual,1,GDP (advance),TV
+2023-10-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-11-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-11-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-11-15,Wed,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2023-11-29,Wed,08:30,actual,1,GDP (2nd est),TV
+2023-11-30,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2023-12-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2023-12-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2023-12-13,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2023-12-14,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2023-12-21,Thu,08:30,actual,1,GDP (final/3rd),TV
+2023-12-22,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-01-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-01-11,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-01-12,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-01-17,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-01-25,Thu,08:30,actual,1,GDP (advance),TV
+2024-01-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-02-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-02-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-02-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-02-16,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-02-28,Wed,08:30,actual,1,GDP (2nd est),TV
+2024-02-29,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-03-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-03-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-03-14,Thu,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2024-03-28,Thu,08:30,actual,1,GDP (final/3rd),TV
+2024-03-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-04-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-04-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-04-11,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-04-15,Mon,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-04-25,Thu,08:30,actual,1,GDP (advance),TV
+2024-04-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-05-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-05-14,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-05-15,Wed,08:30,actual,6,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y; Core Retail Sales m/m; Retail Sales m/m,TV
+2024-05-30,Thu,08:30,actual,1,GDP (2nd est),TV
+2024-05-31,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-06-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-06-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-06-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-06-18,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-06-27,Thu,08:30,actual,1,GDP (final/3rd),TV
+2024-06-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-07-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-07-11,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-07-12,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-07-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-07-25,Thu,08:30,actual,1,GDP (advance),TV
+2024-07-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-08-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-08-13,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-08-14,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-08-15,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-08-29,Thu,08:30,actual,1,GDP (2nd est),TV
+2024-08-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-09-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-09-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-09-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-09-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-09-26,Thu,08:30,actual,1,GDP (final/3rd),TV
+2024-09-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-10-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-10-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-10-11,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-10-17,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-10-30,Wed,08:30,actual,1,GDP (advance),TV
+2024-10-31,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2024-11-01,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-11-13,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-11-14,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-11-15,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-11-27,Wed,08:30,actual,1,GDP (2nd est),TV
+2024-12-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2024-12-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2024-12-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2024-12-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2024-12-19,Thu,08:30,actual,1,GDP (final/3rd),TV
+2024-12-20,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-01-10,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-01-14,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-01-15,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-01-16,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-01-30,Thu,08:30,actual,1,GDP (advance),TV
+2025-01-31,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-02-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-02-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-02-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-02-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-02-27,Thu,08:30,actual,1,GDP (2nd est),TV
+2025-02-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-03-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-03-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-03-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-03-17,Mon,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-03-27,Thu,08:30,actual,1,GDP (final/3rd),TV
+2025-03-28,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-04-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-04-10,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-04-11,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-04-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-04-30,Wed,08:30,actual,1,GDP (advance),TV
+2025-05-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-05-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-05-15,Thu,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2025-05-29,Thu,08:30,actual,1,GDP (2nd est),TV
+2025-05-30,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-06-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-06-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-06-12,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-06-17,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-06-26,Thu,08:30,actual,1,GDP (final/3rd),TV
+2025-06-27,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-07-03,Thu,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-07-15,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-07-16,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-07-17,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-07-30,Wed,08:30,actual,1,GDP (advance),TV
+2025-07-31,Thu,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-08-01,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-08-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-08-14,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-08-15,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-08-28,Thu,08:30,actual,1,GDP (2nd est),TV
+2025-08-29,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-09-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-09-10,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2025-09-11,Thu,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-09-16,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2025-09-25,Thu,08:30,actual,1,GDP (final/3rd),TV
+2025-09-26,Fri,08:30,actual,1,Core PCE Price Index m/m,TV
+2025-10-24,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2025-11-20,Thu,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2025-11-25,Tue,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2025-12-16,Tue,08:30,actual,5,Average Hourly Earnings; Core Retail Sales m/m; Nonfarm Payrolls; Retail Sales m/m; Unemployment Rate,TV
+2025-12-18,Thu,08:30,actual,2,CPI y/y; Core CPI y/y,TV
+2025-12-23,Tue,08:30,actual,1,GDP (advance),TV
+2026-01-09,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-01-13,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-01-14,Wed,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2026-01-22,Thu,08:30,actual,1,GDP (final/3rd),TV
+2026-01-30,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-02-10,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-02-11,Wed,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-02-13,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-02-20,Fri,08:30,actual,2,Core PCE Price Index m/m; GDP (advance),TV
+2026-02-27,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-03-06,Fri,08:30,actual,5,Average Hourly Earnings; Core Retail Sales m/m; Nonfarm Payrolls; Retail Sales m/m; Unemployment Rate,TV
+2026-03-11,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-03-13,Fri,08:30,actual,2,Core PCE Price Index m/m; GDP (2nd est),TV
+2026-03-18,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-04-01,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-04-03,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-04-09,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (final/3rd),TV
+2026-04-10,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-04-14,Tue,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-04-21,Tue,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-04-30,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (advance),TV
+2026-05-08,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-05-12,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-05-13,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-05-14,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-05-28,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (2nd est),TV
+2026-06-05,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-06-10,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-06-11,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-06-17,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-06-25,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (final/3rd),TV
+2026-07-02,Thu,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-07-14,Tue,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-07-15,Wed,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-07-16,Thu,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-07-30,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (advance),TV
+2026-08-07,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-08-12,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-08-13,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-08-14,Fri,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-08-26,Wed,08:30,actual,2,Core PCE Price Index m/m; GDP (2nd est),TV
+2026-09-04,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-09-10,Thu,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-09-11,Fri,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-09-16,Wed,08:30,actual,2,Core Retail Sales m/m; Retail Sales m/m,TV
+2026-09-30,Wed,08:30,actual,2,Core PCE Price Index m/m; GDP (final/3rd),TV
+2026-10-02,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-10-14,Wed,08:30,actual,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,TV
+2026-10-15,Thu,08:30,actual,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,TV
+2026-10-29,Thu,08:30,actual,2,Core PCE Price Index m/m; GDP (advance),TV
+2026-11-06,Fri,08:30,actual,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,TV
+2026-11-10,Tue,08:30,actual,2,CPI m/m; Core CPI m/m,TV
+2026-11-13,Fri,08:30,actual,2,Core PPI m/m; PPI m/m,TV
+2026-11-17,Tue,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2026-11-25,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (2nd est); Personal Income m/m; Personal Spending m/m,BEA sched
+2026-12-04,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2026-12-10,Thu,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2026-12-15,Tue,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2026-12-16,Wed,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2026-12-23,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (final/3rd); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-01-08,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-01-13,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-01-14,Thu,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-01-15,Fri,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-01-28,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (advance); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-02-05,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-02-11,Thu,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-02-12,Fri,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-02-17,Wed,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-02-25,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (2nd est); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-03-05,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-03-10,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-03-12,Fri,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-03-16,Tue,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-03-31,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (final/3rd); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-04-02,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-04-13,Tue,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-04-14,Wed,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-04-16,Fri,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-04-29,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (advance); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-05-07,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-05-12,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-05-13,Thu,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-05-14,Fri,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-05-27,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (2nd est); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-06-04,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-06-10,Thu,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-06-11,Fri,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-06-16,Wed,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-06-25,Fri,08:30,scheduled,4,Core PCE Price Index m/m; GDP (final/3rd); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-07-02,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-07-14,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-07-15,Thu,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-07-16,Fri,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-07-29,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (advance); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-08-06,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-08-10,Tue,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-08-11,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-08-16,Mon,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-08-25,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (2nd est); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-09-03,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-09-10,Fri,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-09-14,Tue,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-09-16,Thu,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-09-30,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (final/3rd); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-10-08,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-10-14,Thu,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-10-15,Fri,08:30,scheduled,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,BLS sched+Census sched
+2027-10-28,Thu,08:30,scheduled,4,Core PCE Price Index m/m; GDP (advance); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-11-05,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-11-10,Wed,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-11-12,Fri,08:30,scheduled,2,Core PPI m/m; PPI m/m,BLS sched
+2027-11-16,Tue,08:30,scheduled,2,Core Retail Sales m/m; Retail Sales m/m,Census sched
+2027-11-24,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (2nd est); Personal Income m/m; Personal Spending m/m,BEA sched
+2027-12-03,Fri,08:30,scheduled,3,Average Hourly Earnings; Nonfarm Payrolls; Unemployment Rate,BLS sched
+2027-12-10,Fri,08:30,scheduled,4,CPI m/m; CPI y/y; Core CPI m/m; Core CPI y/y,BLS sched
+2027-12-15,Wed,08:30,scheduled,4,Core PPI m/m; Core Retail Sales m/m; PPI m/m; Retail Sales m/m,BLS sched+Census sched
+2027-12-22,Wed,08:30,scheduled,4,Core PCE Price Index m/m; GDP (final/3rd); Personal Income m/m; Personal Spending m/m,BEA sched

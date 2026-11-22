@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How the report numbers are calculated</title>
+<style>
+  body { margin: 0; font: 15px/1.5 Georgia, "Times New Roman", serif; background: #f4f1ea; color: #1c1a17; }
+  main { max-width: 820px; margin: 0 auto; padding: 28px 20px 80px; }
+  h1 { font-size: 28px; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { max-width: 72ch; }
+  a { color: #1c1a17; }
+  code { font: 14px Consolas, monospace; }
+  table { width: 100%; border-collapse: collapse; background: white; font: 14px/1.4 Consolas, monospace; margin: 10px 0 18px; }
+  th, td { border-bottom: 1px solid #e4dccb; text-align: left; padding: 8px 10px; vertical-align: top; }
+  th { width: 18ch; }
+  .note { background: #fff6e8; border: 1px solid #e6d3b0; padding: 12px 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>How the report numbers are calculated</h1>
+  <div class="note">
+    <p>This page defines every figure on <a href="report.html">report.html</a>. The score is index points on one Nasdaq CFD contract. There is no spread and no commission. A win is a trade whose points are above zero. A result of zero is not a win.</p>
+  </div>
+
+  <h2>A run</h2>
+  <p>The id is <code>sl{stop}_tp{target}_{session}_{trade limit}_{daily rule}_{lookback}</code>. Stop is 50 or 100 points. Target is 50, 100, 150, or 200. Session is London, New York, New York RTH, or All. Trade limit is every level, or one trade at a time. Daily rule is one trade a day, until the New York date is up 50 points, or no daily cap. Lookback is 1 month, 6 months, 1 year, or all history.</p>
+  <p>The filters keep a run only when its stop, target, session, trade limit, daily rule, and lookback are all still checked. Every box starts checked. The factor table and the run table then use only the runs that remain.</p>
+
+  <h2>What changed the result</h2>
+  <p>Each row is one option of one factor, measured on the runs that currently pass the filters. The other factors still vary inside that row. Net points are the sum of the trade results.</p>
+  <table>
+    <tr><th>Runs</th><td>How many visible runs use that option.</td></tr>
+    <tr><th>Mean net</th><td>The average of those runs’ net points, rounded to 0.1.</td></tr>
+    <tr><th>Median net</th><td>The middle net when the runs are ordered. With an even count, the two middle nets are averaged. Rounded to 0.1.</td></tr>
+    <tr><th>Best</th><td>The largest net in that group.</td></tr>
+    <tr><th>Worst</th><td>The smallest net in that group.</td></tr>
+  </table>
+
+  <h2>The run table</h2>
+  <table>
+    <tr><th>Trades</th><td>Closed results in that run, including a trade still open when the file ends.</td></tr>
+    <tr><th>Win %</th><td>100 × (trades with points above zero) / trades. Rounded to 0.1.</td></tr>
+    <tr><th>Net</th><td>Sum of points. Rounded to 0.1.</td></tr>
+    <tr><th>Expectancy</th><td>Net divided by trades. The average points per trade. Rounded to 0.01.</td></tr>
+    <tr><th>PF</th><td>Profit factor. Sum of winning points divided by the absolute sum of losing points. A trade at exactly zero is in neither sum. Blank when there are no losing points.</td></tr>
+    <tr><th>PF ex best</th><td>The same profit factor after the single largest winning trade is set to zero. If several trades share that size, the first one in the run is the one removed.</td></tr>
+    <tr><th>Max DD</th><td>The deepest drop from a peak of the cumulative point equity to a later point, in points.</td></tr>
+    <tr><th>Gap</th><td>Unconditional win rate minus the win rate after a loss, in percentage points. See the autocorrelation section.</td></tr>
+    <tr><th>Sign</th><td>Negative when the gap is below −2, positive when it is above +2, otherwise zero.</td></tr>
+    <tr><th>Equity</th><td>The sparkline is the cumulative point equity in trade order. It is drawn from about 160 evenly spaced points, and the last point is the final net. Sorting this column uses that final point, which matches the net.</td></tr>
+  </table>
+  <p>Click a heading to sort. A number column starts high to low. A text column starts A to Z. The next click reverses it. Empty cells stay at the bottom.</p>
+
+  <h2>The selected run</h2>
+  <table>
+    <tr><th>Wins and losses</th><td>Wins are points above zero. Losses are every other trade, including a zero.</td></tr>
+    <tr><th>Payoff</th><td>Average winning trade divided by the absolute average of the other trades. Blank when the run has no win or no other trade.</td></tr>
+    <tr><th>Max DD trades</th><td>The longest stretch of trades during which equity stayed below its prior peak. That stretch is not always the same episode as the deepest drawdown. The points figure is the depth. This count is the longest time spent underwater.</td></tr>
+    <tr><th>Long net, short net</th><td>Sum of points for buys, and the sum for sells, with the number of each.</td></tr>
+    <tr><th>Targets, stops, still open</th><td>How many trades exited at the target, at the stop, or at the last price in the file.</td></tr>
+    <tr><th>Average hold</th><td>Average of exit bar index minus entry bar index. The bars are the one-minute prints in the file, so hours with no print, including the closed market, are not counted.</td></tr>
+    <tr><th>Return / swing</th><td>Trades are summed by the New York date of the entry. The figure is the average of those daily sums divided by their standard deviation. The standard deviation divides by the number of days, not by one less. It is not annualized. Blank when every day has the same sum.</td></tr>
+    <tr><th>Chunk win rates</th><td>The run is split into ten equal blocks in trade order. Each number is that block’s win rate. Trades left over after the split are left out. The list is blank below 10 trades.</td></tr>
+  </table>
+
+  <h2>Autocorrelation, gap, and Kelly</h2>
+  <p>These use the trade sequence in the order the trades were opened.</p>
+  <table>
+    <tr><th>Unconditional win rate</th><td>The run’s win rate, as a percent.</td></tr>
+    <tr><th>After a loss</th><td>Among trades that follow a loss, the percent that win. The count next to it is how many trades follow a loss.</td></tr>
+    <tr><th>After a win</th><td>Among trades that follow a win, the percent that win, and how many trades follow a win.</td></tr>
+    <tr><th>Gap</th><td>(Unconditional win rate − win rate after a loss) × 100, in percentage points, rounded to 0.1. A positive gap means the win rate falls after a loss, so wins are clustering. A negative gap means the win rate rises after a loss, so results are alternating.</td></tr>
+    <tr><th>Band</th><td>From the absolute gap. 0 to 2 is no autocorrelation, and size stays fixed. Above 2 up to 4 is weak, and the map uses 1/5 Kelly. Above 4 up to 6 is solid, 1/3 Kelly. Above 6 up to 8 is stronger, 1/2 Kelly. Above 8 is extreme, and the fraction is not used. He treats 9 and 10 as something to check, not a reason to size up. On this test the extreme readings come from runs that hold many trades at once, because one swing closes the stack together.</td></tr>
+    <tr><th>Pearson, win/loss</th><td>Lag-1 correlation of the sequence of 1 for a win and 0 otherwise. Each value is paired with the next trade. The standard deviation divides by the number of pairs. Blank under 3 trades, and 0 when a side of the pair does not vary.</td></tr>
+    <tr><th>Pearson, points</th><td>The same lag-1 correlation on the point results.</td></tr>
+    <tr><th>Full Kelly</th><td>Win rate, as a fraction, minus (loss rate / average winner in R). Average winner in R is the average winning points divided by the stop. The loss side of this formula is one stop, not the average loser. Blank when there is no winning trade or no losing trade.</td></tr>
+    <tr><th>Map</th><td>The fraction named by the band. A positive sign means his map raises risk after a win and cuts it after a loss. A negative sign means the map cuts risk after a win and can raise it after a loss. A zero sign means fixed size, and Kelly is not applied. The equity in this report is always one contract. The map is not used to resize the trades.</td></tr>
+    <tr><th>Longest streaks</th><td>The most wins in a row, and the most losses in a row, anywhere in the run. A zero continues a loss streak.</td></tr>
+  </table>
+
+  <h2>Streak tables</h2>
+  <p>There are two tables: what happens after losses, and what happens after wins. A row for streak k counts every time the run had already printed at least k of that result in a row, up to 15. A longer streak is also a sample for each shorter k. The next trade is the trade that follows that moment. Next win % is 100 × wins / samples. Next loss % is the rest. Sorting these columns does not change the counts.</p>
+
+  <h2>23 October 2026</h2>
+  <p>The chart and the touch table are every cross of an active level during London or New York on that New York date, for the selected run’s lookback. A row is one touch, taken or skipped. Stop and target prices are the selected run’s distances from the fill. Points and the exit are filled in only when the result is “taken”.</p>
+  <table>
+    <tr><th>Time UTC</th><td>The minute of the cross, in UTC.</td></tr>
+    <tr><th>Side</th><td>On the fade report, a cross down is a buy and a cross up is a sell. The continuation report buys a cross up and sells a cross down.</td></tr>
+    <tr><th>Level</th><td>The daily or weekly open or close that was crossed.</td></tr>
+    <tr><th>Fill</th><td>On a touch, the level, or the open when a gap jumps through the level. On a close-beyond trade, the close of that minute.</td></tr>
+    <tr><th>Stop and target</th><td>Fill minus stop × side, and fill plus target × side. Side is +1 for a buy and −1 for a sell.</td></tr>
+    <tr><th>Result</th><td>Taken, outside session, daily trade already taken, day is up 50 points, a trade is still open, or level already used today.</td></tr>
+    <tr><th>PnL</th><td>Points of a taken trade. Exit kind is target, stop, or end of data, followed by the exit price.</td></tr>
+    <tr><th>Sources</th><td>Which completed candles supplied that price. Weekly is yellow on the chart. Daily is blue.</td></tr>
+  </table>
+  <h2 id="continuation">Continuation report</h2>
+  <p><a href="report_continue.html">report_continue.html</a> uses the opposite trigger from <a href="report.html">report.html</a>. Price crossing up through a level is a buy. Price crossing down through a level is a sell. That is buy when the level is reached from below, and sell when the level is reached from above. Stop, target, session, trade limit, daily rule, and lookback are the same grid. The numbers on this page are calculated the same way.</p>
+  <p>Trigger has two options. Touch enters on the cross, including a wick. Close beyond enters only when that one-minute bar finishes strictly on the breakout side of the level: close above the level for a buy, close below the level for a sell. The fill is that close. A wick through the level that closes back on the other side is not taken. Several levels can be beyond the same close. Every level still counts each of them. One at a time keeps the first and skips the others while that trade is open.</p>
+  <p><a href="report.html">Fade report</a> · <a href="report_continue.html">Continuation report</a></p>
+</main>
+</body>
+</html>

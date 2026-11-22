@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the report numbers are calculated</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  main.doc { max-width: 900px; margin: 0 auto; padding: 22px 20px 90px; }
+  .doc h1 { font-size: 22px; margin: 0 0 6px; }
+  .doc h2 { font-size: 15px; margin: 30px 0 8px; color: #fff; }
+  .doc p, .doc li { max-width: 78ch; color: #c3c9d8; font-size: 12.5px; line-height: 1.65; }
+  .doc code { color: #a9c0ff; }
+  .doc table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); margin: 10px 0 18px; font-size: 12px; }
+  .doc th, .doc td { border-bottom: 1px solid var(--line-soft); text-align: left; padding: 8px 10px; vertical-align: top; }
+  .doc th { width: 21ch; color: #dfe5f2; font-weight: 600; }
+  .doc td { color: #b9c1d2; }
+  .doc .note { background: #16202d; border: 1px solid #2b3a52; padding: 12px 14px; border-radius: 7px; }
+  .doc .note p { margin: 0; }
+  .doc a { color: #7ea6ff; }
+  .doc .toplink { display: inline-block; margin-bottom: 14px; }
+  .doc ul li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<main class="doc">
+  <a class="toplink" href="index.html">← back to the report</a>
+  <h1>How the report numbers are calculated</h1>
+  <div class="note">
+    <p>The score is index points on one Nasdaq CFD contract. The CSV holds bid prices; a fixed
+    spread of <b>1.3 points</b> is used for both sides, and the spread column of the file is ignored.
+    A touch sell fills at the level. A touch buy fills at the level once the ask reaches it,
+    which is when the bid reaches level − 1.3. A 1-minute close fills at the candle close instead,
+    plus 1.3 on a buy, and the stop and target are measured from that fill. A 50-point target
+    still pays exactly 50 points from the fill. A win is
+    a trade whose points are above zero; a result of exactly zero counts as a loss for the win rate
+    but is left out of the profit factor.</p>
+  </div>
+
+  <h2>A run</h2>
+  <p>The id is <code>sl{stop}_tp{target}_{session}_lv{level session}_{type}_{entry}_{lookback}_{trades per day}</code>.
+  A US100 New York RTH run that includes the 09:30 bar adds <code>_keep</code>. The same run without that suffix skips the bar.
+  A US100 New York-only run that skips 08:30 and 08:31 adds <code>_skip</code>. The same run without that suffix includes those two minutes.</p>
+  <table>
+    <tr><th>sl</th><td>Stop distance in points: 50 or 100.</td></tr>
+    <tr><th>tp</th><td>Target distance in points: 50, 100, 150 or 200.</td></tr>
+    <tr><th>session</th><td>When trades may open: London (08:00–16:30 Europe/London), New York (08:00–17:00 America/New_York), New York RTH (09:30–16:00 New York) or all of London to New York.</td></tr>
+    <tr><th>cash open</th><td>Skip 09:30 or Include 09:30. This is the first minute of the cash open. On US100 it is an option for New York RTH runs only: the stored run id skips that bar, and the same id ending in <code>_keep</code> includes it. London, New York and All already include the minute, so they have one row. GBPUSD and XAUUSD do not have the skip.</td></tr>
+    <tr><th>NY open</th><td>Skip or include 08:30 and 08:31 New York time, the two minutes from 08:30 up to 08:32. This is an option for the New York-only session on US100. The stored id includes the window. The same id ending in <code>_skip</code> drops those two bars. 08:32 itself is still traded. The minutes are America/New_York local time, so they stay at 08:30 through both standard time and daylight saving. RTH, London and All do not use this option.</td></tr>
+    <tr><th>lv</th><td>Which candles build the daily and weekly levels: every hour of the file, the ETH session (18:00–17:00 New York), or the RTH session only.</td></tr>
+    <tr><th>type</th><td>Reversal buys a support and sells a resistance. Continuation buys a resistance and sells a support.</td></tr>
+    <tr><th>entry</th><td>Touch enters when the price reaches the level. 1-minute close waits for a candle to finish beyond the level and enters at that close. Continuation needs the candle body itself to cross the level: a close above buys, a close below sells. A wick through another level on that candle is not a close. Reversal needs a previous candle to have closed beyond the level, then this candle to close back through it: close back below sells, close back above buys. The stop and target are measured from the close, and a buy adds the 1.3 point spread on top of the close.</td></tr>
+    <tr><th>lookback</th><td>How old a level may be: 1 month, 6 months, 1 year or all history. Age is counted in market days from the level candle to the trade day.</td></tr>
+    <tr><th>trades per day</th><td>Every level, one at a time, one a day, or until target. See below.</td></tr>
+  </table>
+  <p>One rule applies to all four: a given level price can produce at most one trade per New York market day.
+  After that trade the level is used up for the day, even if it is retested, even if the trade lost, and
+  even when the level has changed from support to resistance. The level is available again the next day.
+  Weekly levels are grouped by the Sunday that starts their week; the weekly candle is available from the
+  next market day after it closes.</p>
+  <table>
+    <tr><th>Every level</th><td>Every qualifying touch opens a trade, overlapping trades included.</td></tr>
+    <tr><th>One at a time</th><td>While a trade is open no other trade opens. A touch that arrives while a trade is open is skipped for good; it is not queued.</td></tr>
+    <tr><th>One a day</th><td>The first qualifying touch of the day is taken and everything after it is skipped that day.</td></tr>
+    <tr><th>Until target</th><td>Like one at a time, but once the trades closed on that market day have realised at least the run’s target in points, no further trade opens that day. A trade is still held to its own stop and target.</td></tr>
+  </table>
+
+  <h2>Prices, levels and points</h2>
+  <p>Daily candles use the electronic market day, which opens at 18:00 New York and closes at 17:00 New York
+  the next day, so a bar at or after 18:00 belongs to the next trade date. Each daily candle contributes its
+  open and its close; each weekly candle contributes its open and its close. A price made by two candles is one
+  level with several sources. All prices are held as integer cents, so a level is exact and no rounding drift
+  reaches the stop or target.</p>
+  <p>On a touch, a sell triggers when the bid reaches the level and is filled at the level. A buy triggers when the ask
+  reaches the level, that is when the bid reaches level − 1.3, and is filled at the level. A gap through the
+  level fills at the open instead, and the open becomes the reference price; for a buy the reference is the
+  open plus the spread, for a sell the open itself.</p>
+  <p>On a 1-minute close the reference is the close of the signal candle, not the level. A level at 30,000
+  with a close at 30,001 buys at 30,002.3, and the stop and target are measured from 30,002.3. A close below
+  the level sells at that close, with no spread added. Continuation counts a level only when that candle's
+  body crosses it. A lower level that the wick touches, while the body closes between the two levels, is not
+  a signal. Reversal counts the level when the previous candle closed on one side and this candle closes on
+  the other. The trade still opens at this candle's close.</p>
+  <p>Stop and target are fixed distances from the reference price, so a 50-point stop is always 50 points away
+  whatever the spread does. Points are (exit bid − reference) × side, in points.</p>
+
+  <h2>The run table</h2>
+  <p>Click a column header to sort by it; click again to reverse the order. The
+  arrow marks the active column and direction. Runs that were never computed
+  have no value in a metric column, so they always sort to the bottom whatever
+  the direction. A filter change keeps the current order; Reset filters clears
+  the filters only, not the sort.</p>
+  <table>
+    <tr><th>Trades</th><td>Closed results in that run, including a trade still open when the file ends.</td></tr>
+    <tr><th>Win %</th><td>100 × (trades with points above zero) / trades. Rounded to 0.1.</td></tr>
+    <tr><th>Net</th><td>Sum of points. Rounded to 0.1.</td></tr>
+    <tr><th>PF</th><td>Sum of winning points divided by the absolute sum of losing points. A zero trade is in neither sum. Blank when there is no losing point.</td></tr>
+    <tr><th>Exp</th><td>Net divided by trades. The average points per trade.</td></tr>
+    <tr><th>Max DD</th><td>The deepest drop from a peak of the cumulative point equity to a later point, in points.</td></tr>
+    <tr><th>Payoff</th><td>Average winning trade divided by the absolute average of every non-winning trade (zeros included).</td></tr>
+    <tr><th>Hold</th><td>Average bars between the entry and the exit. The bars are the one-minute prints in the file.</td></tr>
+    <tr><th>Retrace</th><td>Average of how far winning trades moved against the entry before they reached the target, in points. See the retrace section below.</td></tr>
+    <tr><th>Equity</th><td>The sparkline is the cumulative point equity in trade order, about 160 evenly spaced points, ending at the net. Sorting this column uses the net.</td></tr>
+  </table>
+  <p>The factor table on the Factors tab groups the runs that pass the filters by one option of one factor.
+  Mean, median, best and worst are computed on the net points of those runs. The other factors still vary
+  inside a row, so read the table as a comparison across many runs, not as the isolated effect of one option.</p>
+
+  <h2>The selected run</h2>
+  <table>
+    <tr><th>Wins and losses</th><td>Wins are points above zero. Losses are every other trade, including a zero.</td></tr>
+    <tr><th>Targets, stops, forced</th><td>How many trades exited at the target, at the stop, or at the last price in the file.</td></tr>
+    <tr><th>Long net, short net</th><td>Sum of points for buys, and the sum for sells, with the number of each.</td></tr>
+    <tr><th>Max DD trades</th><td>The longest stretch of trades during which equity stayed below its prior peak. It is not always the same episode as the deepest drawdown: the points figure is the depth, this count is the longest time spent underwater.</td></tr>
+    <tr><th>Return / swing</th><td>Trades are summed by the New York date of the entry. The figure is the average of those daily sums divided by their standard deviation. The standard deviation divides by the number of days, not by one less. It is not annualised. Blank when every day has the same sum.</td></tr>
+    <tr><th>Chunk win rates</th><td>The run is split into ten equal blocks in trade order. Each bar is that block’s win rate; leftover trades are dropped. Blank below 10 trades.</td></tr>
+  </table>
+
+  <h2>Autocorrelation, gap, and Kelly</h2>
+  <p>These use the trade sequence in the order the trades were opened.</p>
+  <table>
+    <tr><th>Unconditional win rate</th><td>The run’s win rate, as a percent.</td></tr>
+    <tr><th>After a loss</th><td>Among trades that follow a loss, the percent that win, and how many trades follow a loss.</td></tr>
+    <tr><th>After a win</th><td>Among trades that follow a win, the percent that win, and how many.</td></tr>
+    <tr><th>Gap</th><td>(Unconditional win rate − win rate after a loss) × 100, in percentage points, rounded to 0.1. A positive gap means wins are clustering; a negative gap means they alternate.</td></tr>
+    <tr><th>Band</th><td>From the absolute gap. 0 to 2 is none, which keeps the size fixed and does not apply Kelly; above 2 up to 4 is weak and maps to 1/5 Kelly; above 4 to 6 is solid, 1/3 Kelly; above 6 to 8 is stronger, 1/2 Kelly; above 8 is extreme and no fraction is used.</td></tr>
+    <tr><th>Pearson win/loss</th><td>Lag-1 correlation of the sequence 1 for a win and 0 otherwise, each value paired with the next trade. Blank under 3 trades; 0 when one side does not vary.</td></tr>
+    <tr><th>Pearson points</th><td>The same lag-1 correlation on the point results.</td></tr>
+    <tr><th>Full Kelly</th><td>Win rate as a fraction minus (loss rate / average winner in R), where R is taken as the fixed stop. The loss side uses one stop, not the average loser. Blank when there is no winning or no losing trade.</td></tr>
+    <tr><th>Kelly bet</th><td>Full Kelly multiplied by the fraction named by the band: zero in the none band, blank in the extreme band where no fraction is used. A positive sign means the map raises risk after a win and cuts it after a loss; a negative sign means the opposite. It is shown for reference only: the equity curve is always one contract.</td></tr>
+    <tr><th>Longest streaks</th><td>The most wins in a row and the most losses in a row anywhere in the run. A zero continues a loss streak.</td></tr>
+  </table>
+
+  <h2>Streak tables</h2>
+  <p>A row for streak k counts every time the run had already printed at least k results of that kind in a row,
+  up to 15. A longer streak is also a sample for every shorter k. The next trade is the trade that follows that
+  moment. Next win % is 100 × wins / samples.</p>
+
+  <h2>Retrace and excursion</h2>
+  <p>MAE (maximum adverse excursion) is how far the price moved against the entry before the trade exited.
+  MFE (maximum favourable excursion) is how far it moved in the trade’s favour. Both are measured on the bid
+  path from the fill, so the 1.3-point spread of a fresh buy is already inside its MAE.</p>
+  <table>
+    <tr><th>Winners MAE</th><td>For winning trades only: the average, median, 90th percentile and maximum points given back toward the stop before the target was reached. This is the answer to “it won, but how close did it come to losing?”.</td></tr>
+    <tr><th>Winners near stop</th><td>Winning trades whose MAE reached at least 90% of the stop distance, and their share of all winners.</td></tr>
+    <tr><th>Losers MFE</th><td>For losing trades: how far they had run in profit before the stop was hit.</td></tr>
+  </table>
+
+  <h2>The audit day</h2>
+  <p>The audit tab replays one New York market day of one run and lists every touch of an active level during
+  that day, taken or skipped, with the reason. The chart draws the one-minute bid candles of that market day,
+  weekly levels in gold, daily levels in sky blue, every touch as a dot (filled ring when taken) and each taken
+  trade's fill, stop, target and exit.</p>
+  <table>
+    <tr><th>Time</th><td>The minute of the touch in UTC, and the same minute in New York time.</td></tr>
+    <tr><th>Side</th><td>Which way the touch was about to be traded: buy or sell, before the run’s type filter.</td></tr>
+    <tr><th>Level, kind, source</th><td>The crossed price and which completed candles supplied it.</td></tr>
+    <tr><th>Rank</th><td>The order of the touch inside its one-minute bar. Several levels can be crossed in the same minute.</td></tr>
+    <tr><th>Age</th><td>Market days between the level candle and the trade day.</td></tr>
+    <tr><th>Decision</th><td>Taken, or why it was skipped: outside the trading session, no entry in the first minute of the cash open (a US100 RTH run set to Skip 09:30), older than the lookback, the other trade type, a close exactly on the level, the level already traded today, a trade is still open, one trade a day already taken, or the day target already reached.</td></tr>
+    <tr><th>Points, exit, MAE, MFE, bars</th><td>Taken trades only: the realised points, the exit price and kind, the excursions and the hold in one-minute bars.</td></tr>
+  </table>
+  <p>“Simulation” in the audit header compares that Python replay with the compiled simulation that produced
+  summary.json. It reads “matches” when the two agree on every taken trade of the day.</p>
+
+  <h2>Favourites</h2>
+  <p>The star in each run row marks a combination. Favourites are written to
+  <code>results/favourites.json</code> by the local server, so they survive a browser change and a new run.
+  The “Favourites only” checkbox filters the table down to them.</p>
+</main>
+</body>
+</html>
