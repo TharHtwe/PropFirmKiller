@@ -28,6 +28,7 @@ already decided, which result file is current, and what not to rebuild.
 - Python 3.11 or newer. This machine uses `C:\Python313\python.exe`.
   Packages used by the engines are numpy and pandas.
 - A browser.
+- Git LFS, for the price CSVs and bar caches. This machine has Git LFS 3.7.
 
 The chart itself only needs Node. The Strategy, Risk, Prop, and Combine
 buttons start Python from the server. If `python` is not on PATH, set
@@ -59,18 +60,19 @@ Only one analysis may run at a time. The pages share that lock.
 
 ## Large files
 
-GitHub refuses a file larger than 100 MB. The price CSVs and the event
-caches are larger than that, so they are not stored as git blobs. They are
-release assets on the tag `data-files`. After a fresh clone, from this
-folder:
+GitHub refuses a normal git file larger than 100 MB. The price CSVs and
+the event caches are stored with Git LFS, so a clone includes them:
 
 ```text
-python tools/fetch_large_files.py
+git lfs install
+git clone https://github.com/TharHtwe/PropFirmKiller.git
 ```
 
-That writes each file back to the path in `large-files.json`. If the file
-is already there and the size matches, it is left alone. The copy on this
-machine already has those files, so this step is only for a new clone.
+If a clone skipped the file contents, run `git lfs pull` in the repo.
+The same files are also attached to the `data-files` release.
+`python tools/fetch_large_files.py` restores that copy from
+`large-files.json` when Git LFS is not available. A file already present
+at the recorded size is left alone.
 
 `summary.json`, `prop.json`, `prop2.json`, `risk.json`, `combine.json`,
 and `news-handling.json` are under 100 MB and are in git. Opening the

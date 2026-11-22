@@ -8,6 +8,12 @@ Source of the research: `D:\TradingView2`. The chart server is `server.js`
 on port 8080. Python for the engines is `C:\Python313\python.exe` on the
 machine that built this. The repo is https://github.com/TharHtwe/PropFirmKiller
 
+Price CSVs and `results/cache/*.npz` files over 100 MB are Git LFS, not
+normal blobs. Drive D: has almost no free space, so the local LFS object
+cache is `C:/pfk-lfs` (`lfs.storage` in this repo only). Do not copy that
+cache back onto D:. Summary, prop, prop2, risk, and combine JSON are
+normal git files.
+
 ## Leave these alone
 
 - Do not overwrite `analysis/nasdaq-level-retrace/results/report.html`.
